@@ -1,12 +1,12 @@
-
-function getURL(str){
-    
-    return str.match(/https?:\/\/\S+/g) || [];
+function getURL(dataSet) {
+    return dataSet.match(/https?:\/\/[^\s]+/g) || [];
 }
- function greedyQuery(dataSet) {
-    return dataSet.match(/https?:\/\/\S+\?\S+=\S+(?:&\S+=\S+){2,}/g) || [];
+
+function greedyQuery(dataSet) {
+    return dataSet.match(/https?:\/\/[^\s?]+\?[^\s=&]+=[^\s=&]+(?:&[^\s=&]+=[^\s=&]+){2,}/g) || [];
 }
 
 function notSoGreedy(dataSet) {
-    return dataSet.match(/https?:\/\/\S+\?\S+=\S+(?:&\S+=\S+){1,2}(?!&)/g) || [];
+    return dataSet.match(/https?:\/\/[^\s?]+\?[^\s=&]+=[^\s=&]+(?:&[^\s=&]+=[^\s=&]+){1,2}(?!&)/g) || [];
 }
+ 
